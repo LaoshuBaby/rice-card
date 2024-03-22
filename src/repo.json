@@ -1,0 +1,10 @@
+{
+    "title_CJK_varient": "zh-CN",
+    "desc_CJK_varient": "zh-CN",
+    "title_font_sc_fontname": "SourceHanSansSC-Regular.otf",
+    "desc_font_tc_fontname": "SourceHanSansTC-Regular.otf",
+    "title_font_size": 48,
+    "desc_font_size": 24,
+    "title_top_margin": 50,
+    "desc_top_margin": 100
+}
