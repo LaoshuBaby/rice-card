@@ -1,0 +1,52 @@
+{
+    "card": {
+      "width": 1200,
+      "height": 630,
+      "bg_color": [255, 255, 255]
+    },
+    "elements": [
+      {
+        "type": "text_box",
+        "content_key": "title",
+        "font": {
+          "name": "SourceHanSansSC-Regular.otf",
+          "size": 48,
+          "color": [0, 0, 0]
+        },
+        "top_margin": 50
+      },
+      {
+        "type": "text_box",
+        "content_key": "desc",
+        "font": {
+          "name": "SourceHanSansTC-Regular.otf",
+          "size": 24,
+          "color": [0, 0, 0]
+        },
+        "top_margin": 100
+      },
+      {
+        "type": "text_box",
+        "content_key": "extra_info",
+        "font": {
+          "name": "SourceHanSansSC-Regular.otf",
+          "size": 20,
+          "color": [0, 0, 0]
+        },
+        "top_margin": 50
+      },
+      {
+        "type": "image",
+        "path": "github-mark.png",
+        "width": 20,
+        "height": 20,
+        "margin_right": 10,
+        "margin_bottom": 10
+      },
+      {
+        "type": "polygon",
+        "points": [10, 30, 30, 30, 20, 10],
+        "fill": "red"
+      }
+    ]
+  }
