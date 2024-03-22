@@ -40,11 +40,11 @@ def create_open_graph_card(text_content, config_path, output_path):
     for element in config["elements"]:
         if element["type"] == "text":
             text_pos = element["position"]
-            text_content_key = element["content_key"]
+            text_id = element["id"]
             font = ImageFont.truetype(
                 element["font"]["name"], element["font"]["size"]
             )
-            text = text_content[text_content_key]
+            text = text_content[text_id]
             for magic_word in MAGIC_SYMBOL:
                 magic_word_key = "{{" + magic_word + "}}"
                 if magic_word_key in text:
@@ -82,7 +82,8 @@ def create_open_graph_card(text_content, config_path, output_path):
 text_content = {
     "title": "肉骨茶——新加坡特色美食",
     "desc_comment_count": "在台灣也可能被寫作肉骨茶\n享受美味的同时，不要忘记文化的意义。",
-    "desc_date": "1970.01.01",
+    "author_name": "laoshubaby",
+    "author_date": "1970.01.01",
     "meta_link": "{{REPO_URL}}",
 }
 create_open_graph_card(

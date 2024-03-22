@@ -1,0 +1,17 @@
+{
+    "extends": [
+      "plugin:jsonc/recommended-with-jsonc"
+    ],
+    "overrides": [
+      {
+        "files": ["*.json"],
+        "parser": "jsonc-eslint-parser",
+        "rules": {
+          "jsonc/array-bracket-spacing": ["error", "never"],
+          "jsonc/object-curly-spacing": ["error", "always"],
+          "jsonc/indent": ["error", 2],
+          "jsonc/array-element-newline": ["error", { "multiline": true, "minItems": 10 }]
+        }
+      }
+    ]
+  }
