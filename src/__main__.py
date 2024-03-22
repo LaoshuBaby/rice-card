@@ -1,33 +1,12 @@
 import json
 from PIL import Image, ImageDraw, ImageFont
 
+from method import get_repo_metadata, get_colour
+
 MAGIC_SYMBOL = {"REPO_URL": "get_repo_metadata"}
 
 
-def get_repo_metadata(repo_owner=None, repo_name=None, repo_url=None):
-    # 如果repo_owner和repo_name均不为空，则构建repo_url
-    if repo_owner and repo_name:
-        repo_url = "https://github.com/" + f"{repo_owner}/{repo_name}"
-    else:
-        repo_url = repo_url
-    return repo_url
-
-
-def get_colour(colour_name: str) -> str:
-    palette = {
-        "Python": "#3572A5",
-        "HTML": "#E34C26",
-        "C#": "#178600",
-        "Java": "#B07219",
-        "JavaScript": "#F1E05A",
-        "Go": "#00ADD8",
-        "TypeScript": "#3178C6",
-        "Rust": "#DEA584",
-    }
-    return palette[colour_name]
-
-
-def create_open_graph_card(text_content, config_path, output_path):
+def create_card(text_content, config_path, output_path):
     with open(config_path, "r") as f:
         config = json.load(f)
 
@@ -66,7 +45,10 @@ def create_open_graph_card(text_content, config_path, output_path):
             # 假设background是您要将图片合并到的背景Image对象
             # 确保背景图片也是RGBA模式，以支持透明度
             card_image.paste(img, img_pos, img)
-        elif element["type"] == "polygon" or element["type"] == "polygon_linguist":
+        elif (
+            element["type"] == "polygon"
+            or element["type"] == "polygon_linguist"
+        ):
             points = element["points"]
             fill_color = (
                 get_colour("Python")
@@ -78,16 +60,21 @@ def create_open_graph_card(text_content, config_path, output_path):
     card_image.save(output_path)
 
 
-# 使用示例
-text_content = {
-    "title": "肉骨茶——新加坡特色美食",
-    "desc_comment_count": "在台灣也可能被寫作肉骨茶\n享受美味的同时，不要忘记文化的意义。",
-    "author_name": "laoshubaby",
-    "author_date": "1970.01.01",
-    "meta_link": "{{REPO_URL}}",
-}
-create_open_graph_card(
-    text_content=text_content,
-    config_path="../template/github_repo.json",
-    output_path="preview_card.png",
-)
+def main() -> None:
+    # 使用示例
+    text_content = {
+        "title": "肉骨茶——新加坡特色美食",
+        "desc_comment_count": "在台灣也可能被寫作肉骨茶\n享受美味的同时，不要忘记文化的意义。",
+        "author_name": "laoshubaby",
+        "author_date": "1970.01.01",
+        "meta_link": "{{REPO_URL}}",
+    }
+    create_card(
+        text_content=text_content,
+        config_path="../template/github_repo.json",
+        output_path="preview_card.png",
+    )
+
+
+if __name__ == "__main__":
+    main()
