@@ -10,6 +10,7 @@ class DraggableElement:
         self.canvas = canvas
         self.element_type = element_type
         self.kwargs = kwargs  # This already stores all passed properties
+        self.id = id
 
         if element_type == "text":
             self.item = canvas.create_text(
@@ -67,7 +68,7 @@ class DraggableElement:
 
     def get_position(self):
         coords = self.canvas.coords(self.item)
-        if self.element_type in ["text", "polygon"]:
+        if self.element_type in ["text", "polygon", "polygon_linguist"]:
             return coords[0], coords[1]  # x, y
         elif self.element_type == "image":
             return coords[0], coords[1]  # Top-left corner
@@ -112,7 +113,12 @@ class CardEditor:
                     width=data["card"]["width"], height=data["card"]["height"]
                 )
                 for element in data["elements"]:
-                    if element["type"] in ["text", "image", "polygon"]:
+                    if element["type"] in [
+                        "text",
+                        "image",
+                        "polygon",
+                        "polygon_linguist",
+                    ]:
                         self.add_element(element)
         self.original_width = data["card"]["width"]
         self.original_height = data["card"]["height"]
@@ -121,9 +127,10 @@ class CardEditor:
         element_copy = (
             element.copy()
         )  # Make a copy to preserve the original dictionary
-        x, y = element_copy.get("position", [0, 0])
-        width = element_copy.pop("width", 100)
-        height = element_copy.pop("height", 50)
+        x = int(element_copy.get("position", [0, 0])[0])
+        y = int(element_copy.get("position", [0, 0])[1])
+        width = int(element_copy.pop("width", 114))
+        height = int(element_copy.pop("height", 114))
         id = element_copy.pop("id", "EXAMPLEID")
         draggable_element = DraggableElement(
             self.canvas,
@@ -146,19 +153,11 @@ class CardEditor:
             },
             "elements": [],
         }
-        for element in self.elements:
-            el_data = {
-                "type": element.element_type,
-                "id": element.kwargs.get("id", ""),
-                "position": element.get_position(),
-            }
-            # Rest of the code to update el_data based on element type...
-            data["elements"].append(el_data)
 
         for element in self.elements:
             el_data = {
                 "type": element.element_type,
-                "id": element.kwargs.get("id", ""),
+                "id": element.id,
                 "position": element.get_position(),
             }
 
@@ -166,10 +165,12 @@ class CardEditor:
                 el_data.update(
                     {
                         "font": element.kwargs.get("font"),
-                        "text": element.kwargs.get("text", "Sample Text"),
                     }
                 )
             elif element.element_type == "image":
+                print("=============")
+                print(element.kwargs.get("width"),element.kwargs.get("height"))
+                print("=============")
                 el_data.update(
                     {
                         "path": element.kwargs.get("path", ""),
@@ -179,6 +180,13 @@ class CardEditor:
                 )
             elif element.element_type == "polygon":
                 el_data.update({"points": element.kwargs.get("points", [])})
+            elif element.element_type == "polygon_linguist":
+                el_data.update(
+                    {
+                        "points": element.kwargs.get("points", []),
+                        "fill": element.kwargs.get("fill", []),
+                    }
+                )
 
             data["elements"].append(el_data)
 
