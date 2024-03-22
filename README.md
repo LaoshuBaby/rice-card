@@ -14,7 +14,9 @@ A Open Graph image preview card generater written in Python.
 
 ## Why this name?
 
-Because I cooked rice today.
+~~Because I cooked rice today.~~
+
+There are very few projects with the same name, so it is not easy to cause confusion. There are only 2 projects with the same name on GitHub: [azuremine/RiceCardMageSys](https://github.com/azuremine/RiceCardMageSys) and [luckrf/Ricecard](https://github.com/luckrf/Ricecard).
 
 ## Q&A
 
