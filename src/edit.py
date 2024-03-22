@@ -4,7 +4,9 @@ import json
 
 
 class DraggableElement:
-    def __init__(self, canvas, x, y, width, height, element_type, **kwargs):
+    def __init__(
+        self, canvas, x, y, width, height, id, element_type, **kwargs
+    ):
         self.canvas = canvas
         self.element_type = element_type
         self.kwargs = kwargs  # This already stores all passed properties
@@ -13,7 +15,7 @@ class DraggableElement:
             self.item = canvas.create_text(
                 x,
                 y,
-                text=kwargs.get("text", "TESTTEXT"),
+                text=id,
                 anchor="nw",
                 font=("Arial", kwargs.get("size", 24)),
             )
@@ -122,12 +124,14 @@ class CardEditor:
         x, y = element_copy.get("position", [0, 0])
         width = element_copy.pop("width", 100)
         height = element_copy.pop("height", 50)
+        id = element_copy.pop("id", "EXAMPLEID")
         draggable_element = DraggableElement(
             self.canvas,
             x,
             y,
             width,
             height,
+            id,
             element_copy["type"],
             **element_copy
         )
