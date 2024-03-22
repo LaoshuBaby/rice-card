@@ -8,9 +8,9 @@ def create_open_graph_card(text_content, config_path, output_path):
     card_width = config["card"]["width"]
     card_height = config["card"]["height"]
     bg_color = tuple(config["card"]["bg_color"])
+    python_color = "#66CCFF"  # 定义python颜色
     card_image = Image.new("RGB", (card_width, card_height), bg_color)
     draw = ImageDraw.Draw(card_image)
-    current_top_margin = 0
 
     for element in config["elements"]:
         if element["type"] == "text_box":
@@ -19,21 +19,17 @@ def create_open_graph_card(text_content, config_path, output_path):
                 element["font"]["name"], element["font"]["size"]
             )
             text = text_content[text_content_key]
-            text_bbox = draw.textbbox((0, 0), text, font=font)
-            text_width, text_height = text_bbox[2], text_bbox[3]
-            text_pos = (
-                (card_width - text_width) // 2,
-                current_top_margin + element["top_margin"],
-            )
-            current_top_margin += text_height + element["top_margin"]
+            text_pos = element["position"]
             draw.text(text_pos, text, fill=tuple(element["font"]["color"]), font=font)
         elif element["type"] == "image":
             img = Image.open(element["path"])
             img = img.resize((element["width"], element["height"]))
-            card_image.paste(img, (card_width - img.width - element["margin_right"], card_height - img.height - element["margin_bottom"]), img)
+            img_pos = element["position"]
+            card_image.paste(img, img_pos)
         elif element["type"] == "polygon":
-            points = [(x if i % 2 == 0 else card_height - x) for i, x in enumerate(element["points"])]
-            draw.polygon(points, fill=element["fill"])
+            points = element["points"]
+            fill_color = python_color if element["fill"] == "python" else element["fill"]
+            draw.polygon(points, fill=fill_color)
 
     card_image.save(output_path)
 
@@ -46,5 +42,5 @@ text_content = {
 create_open_graph_card(
     text_content=text_content,
     config_path="config.json",
-    output_path="preview_card_ZH.png",
+    output_path="preview_card.png",
 )
