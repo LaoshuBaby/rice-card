@@ -9,7 +9,14 @@ A Open Graph image preview card generater written in Python.
 
 ## Alternative
 
-* [Socialify](https://github.com/wei/socialify)
+### local-host
+
+* [wei/socialify](https://github.com/wei/socialify)
+* [DGP-Studio/Snap.Hutao.Docs.Open.Graph](https://github.com/DGP-Studio/Snap.Hutao.Docs.Open.Graph)
+
+### SaaS
+
+* [Vercel/og-image](https://github.com/vercel/og-image) Note: this repository had been archived, and now serve as function on Vercel.
 * [BannerBear](https://www.bannerbear.com/)
 
 ## Why this name?
@@ -20,13 +27,9 @@ There are very few projects with the same name, so it is not easy to cause confu
 
 ## Q&A
 
-Q: Why use this technical stack? Why not built template with frontend framework?
-
-A: There are already frontend project make a preview image, I want to try something different and let it can run headless as service.
-
 Q: Which Pain Point you solve?
 
 A: 1. For organization they may want to generate unified preview image style for every repository, while there isn't a workflow for those kind of batch task.
-   2. GitHub's default preview image can't work correct with CJK characters.
-   3. Current Socialify mainly intent for git repository, but many website (especially those built with wordpress) can't use it.
-   4. You can use it preview osmcha changeset when share a link in Telegram or Discord.
+   1. GitHub's default preview image can't work correct with CJK characters.
+   2. Current Socialify mainly intent for git repository, but many website (especially those built with wordpress) can't use it.
+   3. You can use it preview osmcha changeset when share a link in Telegram or Discord.
