@@ -7,13 +7,13 @@
   "elements": [
     {
       "type": "text_box",
-      "content_key": "extra_info",
+      "content_key": "meta_link",
       "font": {
         "name": "SourceHanSansSC-Regular.otf",
         "size": 20,
         "color": [0, 0, 0]
       },
-      "position": [20, 20]
+      "position": [20, 120]
     },
     {
       "type": "text_box",
@@ -23,7 +23,7 @@
         "size": 48,
         "color": [0, 0, 0]
       },
-      "position": [20, 60]
+      "position": [20, 160]
     },
     {
       "type": "text_box",
@@ -33,18 +33,18 @@
         "size": 24,
         "color": [0, 0, 0]
       },
-      "position": [20, 130]
+      "position": [20, 230]
     },
     {
       "type": "image",
-      "path": "github-mark.png",
-      "width": 20,
-      "height": 20,
-      "position": [1160, 10]
+      "path": "../asset/github-mark.png",
+      "width": 135,
+      "height": 135,
+      "position": [1020, 130]
     },
     {
       "type": "polygon",
-      "points": [0, 620, 1200, 620, 1200, 630, 0, 630],
+      "points": [0, 605, 1200, 605, 1200, 630, 0, 630],
       "fill": "python"
     }
   ]
