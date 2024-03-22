@@ -33,3 +33,7 @@ A: 1. For organization they may want to generate unified preview image style for
    1. GitHub's default preview image can't work correct with CJK characters.
    2. Current Socialify mainly intent for git repository, but many website (especially those built with wordpress) can't use it.
    3. You can use it preview osmcha changeset when share a link in Telegram or Discord.
+
+Q: Where are colour defined?
+
+A: Colour value are extracted from [github-linguist/linguist](https://github.com/github-linguist/linguist/blob/master/lib/linguist/languages.yml)

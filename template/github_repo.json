@@ -6,7 +6,7 @@
   },
   "elements": [
     {
-      "type": "text_box",
+      "type": "text",
       "content_key": "meta_link",
       "font": {
         "name": "SourceHanSansSC-Regular.otf",
@@ -16,7 +16,7 @@
       "position": [20, 120]
     },
     {
-      "type": "text_box",
+      "type": "text",
       "content_key": "title",
       "font": {
         "name": "SourceHanSansSC-Bold.otf",
@@ -26,8 +26,18 @@
       "position": [20, 160]
     },
     {
-      "type": "text_box",
-      "content_key": "desc",
+      "type": "text",
+      "content_key": "desc_comment_count",
+      "font": {
+        "name": "SourceHanSansSC-Bold.otf",
+        "size": 48,
+        "color": [0, 0, 0]
+      },
+      "position": [20, 160]
+    },
+    {
+      "type": "text",
+      "content_key": "desc_date",
       "font": {
         "name": "SourceHanSansTC-Regular.otf",
         "size": 24,
@@ -43,9 +53,9 @@
       "position": [1020, 130]
     },
     {
-      "type": "polygon",
+      "type": "polygon_linguist",
       "points": [0, 605, 1200, 605, 1200, 630, 0, 630],
-      "fill": "python"
+      "fill": "Python"
     }
   ]
 }
