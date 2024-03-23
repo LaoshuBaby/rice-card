@@ -1,7 +1,7 @@
 import json
 from PIL import Image, ImageDraw, ImageFont
 
-from method import get_repo_metadata, get_colour
+from method import get_repo_url, get_colour
 
 MAGIC_SYMBOL = {"REPO_URL": "get_repo_metadata"}
 
@@ -29,7 +29,7 @@ def create_card(text_content, config_path, output_path):
                 if magic_word_key in text:
                     text = text.replace(
                         magic_word_key,
-                        get_repo_metadata(
+                        get_repo_url(
                             repo_owner="laoshubaby", repo_name="rice-card"
                         ),
                     )
